@@ -1,0 +1,116 @@
+from zipfile import ZipFile
+import os
+
+# Create HTML file from previous content
+html_content = """
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مساعد استرجاع الحسابات</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      padding: 0;
+      direction: rtl;
+    }
+    header {
+      background-color: #1a73e8;
+      color: white;
+      padding: 1rem;
+      text-align: center;
+    }
+    .container {
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    .card {
+      background-color: white;
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 50px;
+      height: 50px;
+      margin-bottom: 1rem;
+    }
+    .card a {
+      display: block;
+      margin-top: 0.5rem;
+      color: #1a73e8;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    footer {
+      text-align: center;
+      padding: 1rem;
+      background-color: #eee;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>مساعد استرجاع الحسابات</h1>
+  </header>
+  <div class="container">
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png" alt="فيسبوك">
+      <div>استرجاع حساب فيسبوك</div>
+      <a href="https://www.facebook.com/hacked" target="_blank">انتقل</a>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/e/e7/Instagram_logo_2016.svg" alt="إنستغرام">
+      <div>استرجاع حساب إنستغرام</div>
+      <a href="https://www.instagram.com/hacked" target="_blank">انتقل</a>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/7/7b/X_Logo.svg" alt="تويتر X">
+      <div>استرجاع حساب X (تويتر)</div>
+      <a href="https://help.twitter.com/forms/account-access" target="_blank">انتقل</a>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="واتساب">
+      <div>استرجاع حساب واتساب</div>
+      <a href="https://www.whatsapp.com/contact/noclient" target="_blank">انتقل</a>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="تيليجرام">
+      <div>استرجاع حساب تيليجرام</div>
+      <a href="https://telegram.org/support" target="_blank">انتقل</a>
+    </div>
+    <div class="card">
+      <img src="https://upload.wikimedia.org/wikipedia/en/c/c4/Snapchat_logo_2019.svg" alt="سناب شات">
+      <div>استرجاع حساب سناب شات</div>
+      <a href="https://support.snapchat.com/en-US/i-need-help" target="_blank">انتقل</a>
+    </div>
+  </div>
+  <footer>
+    تواصل معنا: <a href="https://t.me/x_rmad">@x_rmad</a> | قناة التحديثات: <a href="https://t.me/dwdwdd">@dwdwdd</a>
+  </footer>
+</body>
+</html>
+"""
+
+# Save to file
+html_path = "/mnt/data/index.html"
+with open(html_path, "w", encoding="utf-8") as file:
+    file.write(html_content)
+
+# Zip the file
+zip_path = "/mnt/data/recovery_site.zip"
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(html_path, arcname="index.html")
+
+zip_path
